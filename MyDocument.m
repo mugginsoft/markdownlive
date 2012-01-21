@@ -1,6 +1,6 @@
 /*******************************************************************************
 	MyDocument.m - <http://github.com/rentzsch/MarkdownLive>
-		Copyright (c) 2006-2010 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
+		Copyright (c) 2006-2011 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
 		Some rights reserved: <http://opensource.org/licenses/mit-license.php>
 
 	***************************************************************************/
@@ -78,8 +78,13 @@ NSString	*kMarkdownDocumentType = @"MarkdownDocumentType";
 	[super windowControllerDidLoadNib:controller_];
 }
 
-- (BOOL)writeToURL:(NSURL*)absoluteURL_ ofType:(NSString*)typeName_ error:(NSError**)error_ {
-	BOOL result = NO;
+- (BOOL)writeToURL:(NSURL*)absoluteURL_
+    ofType:(NSString*)typeName_
+    forSaveOperation:(NSSaveOperationType)saveOperation_
+    originalContentsURL:(NSURL*)absoluteOriginalContentsURL_
+    error:(NSError **)error_
+{
+    BOOL result = NO;
 	if ([typeName_ isEqualToString:kMarkdownDocumentType]) {
 		[markdownSourceTextView breakUndoCoalescing];
 		result = [[markdownSource string] writeToURL:absoluteURL_
@@ -88,6 +93,37 @@ NSString	*kMarkdownDocumentType = @"MarkdownDocumentType";
 											   error:error_];
 		
 	}
+    
+    if (result && saveOperation_ != NSAutosaveOperation) {
+        NSURL *markdownFileURL = [self fileURL];
+        NSURL *htmlFileURL = [[markdownFileURL URLByDeletingPathExtension] URLByAppendingPathExtension:@"html"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[htmlFileURL path]]) {
+            NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithContentsOfURL:htmlFileURL
+                                                                       options:NSXMLNodePreserveAll|NSXMLDocumentTidyXML
+                                                                         error:nil] autorelease];
+            if (doc) {
+                NSArray *nodes = [doc nodesForXPath:@"//*[@id=\"markdownlive\"]" error:nil];
+                if ([nodes count] == 1) {
+                    NSXMLElement *node = [nodes objectAtIndex:0];
+                    NSXMLDocument *markdownDoc = [[[NSXMLDocument alloc] initWithXMLString:[ORCDiscount markdown2HTML:[markdownSource string]]
+                                                                                   options:NSXMLDocumentTidyHTML
+                                                                                     error:nil] autorelease];
+                    NSArray *markdownNodes = [markdownDoc nodesForXPath:@"/html/body/*" error:nil];
+                    [markdownNodes makeObjectsPerformSelector:@selector(detach)];
+                    [node setChildren:markdownNodes];
+                    NSString *htmlFileContent = [doc XMLStringWithOptions:NSXMLNodePrettyPrint];
+                    if ([htmlFileContent hasPrefix:@"<?xml"]) {
+                        NSUInteger index = [htmlFileContent rangeOfString:@"\n"].location;
+                        htmlFileContent = [htmlFileContent substringFromIndex:index+1];
+                    }
+                    [htmlFileContent writeToURL:htmlFileURL
+                                     atomically:YES
+                                       encoding:NSUTF8StringEncoding
+                                          error:nil];
+                }
+            }
+        }
+    }
 	
 	return result;
 }
