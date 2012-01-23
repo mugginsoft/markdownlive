@@ -254,7 +254,7 @@ mkd_parse_line(char *bfr, int size, MMIOT *f, int flags)
 {
     ___mkd_initmmiot(f, 0);
     f->flags = flags & USER_FLAGS;
-    ___mkd_reparse(bfr, size, 0, f);
+    ___mkd_reparse(bfr, size, 0, f, 0);
     ___mkd_emblock(f);
 }
 
@@ -269,7 +269,7 @@ mkd_line(char *bfr, int size, char **res, DWORD flags)
     
     mkd_parse_line(bfr, size, &f, flags);
 
-    if ( len = S(f.out) ) {
+    if ( (len = S(f.out)) ) {
 	/* kludge alert;  we know that T(f.out) is malloced memory,
 	 * so we can just steal it away.   This is awful -- there
 	 * should be an opaque method that transparently moves 

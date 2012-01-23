@@ -64,8 +64,7 @@ fail(char *why, ...)
     exit(1);
 }
 
-
-void
+int
 main(argc, argv)
 char **argv;
 {

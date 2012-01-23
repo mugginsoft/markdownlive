@@ -37,6 +37,8 @@ char *pgm = "theme";
 char *output = 0;
 char *pagename = 0;
 char *root = 0;
+int   everywhere = 0;	/* expand all <?theme elements everywhere */
+
 #if HAVE_PWD_H
 struct passwd *me = 0;
 #endif
@@ -466,7 +468,7 @@ spin(FILE *template, MMIOT *doc, FILE *output)
 
 		for (i=0; i < NR(keyword); i++)
 		    if ( thesame(p, keyword[i].kw) ) {
-			if ( keyword[i].where & where )
+			if ( everywhere || (keyword[i].where & where) )
 			    (*keyword[i].what)(doc,output,flags,where);
 			break;
 		    }
@@ -496,8 +498,7 @@ spin(FILE *template, MMIOT *doc, FILE *output)
     }
 } /* spin */
 
-
-void
+int
 main(argc, argv)
 char **argv;
 {
@@ -512,9 +513,11 @@ char **argv;
     opterr=1;
     pgm = basename(argv[0]);
 
-    while ( (opt=getopt(argc, argv, "fd:t:p:o:V")) != EOF ) {
+    while ( (opt=getopt(argc, argv, "Efd:t:p:o:V")) != EOF ) {
 	switch (opt) {
 	case 'd':   root = optarg;
+		    break;
+	case 'E':   everywhere = 1;
 		    break;
 	case 'p':   pagename = optarg;
 		    break;
