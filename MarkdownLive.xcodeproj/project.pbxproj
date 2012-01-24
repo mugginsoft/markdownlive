@@ -112,6 +112,8 @@
 		795F6DB9105D75D300D1F90A /* mkdioWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkdioWrapper.h; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* MarkdownLive-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MarkdownLive-Info.plist"; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* MarkdownLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarkdownLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8AB90814CF4D2F00DBF8D5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		AB8AB90914CF4D2F00DBF8D5 /* update.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update.sh; sourceTree = "<group>"; };
 		ABCE3DDF13C8DFFF00DF3CD0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		ABECD8C213C8B8CA00B77CFD /* ORCDiscount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ORCDiscount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABECD8C313C8B8CA00B77CFD /* ORCDiscount-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ORCDiscount-Info.plist"; sourceTree = "<group>"; };
@@ -176,6 +178,8 @@
 		22ECEEC512E7C258003B50DC /* discount-config */ = {
 			isa = PBXGroup;
 			children = (
+				AB8AB90814CF4D2F00DBF8D5 /* README.markdown */,
+				AB8AB90914CF4D2F00DBF8D5 /* update.sh */,
 				226936B912E7C8B600171322 /* mkdio.h */,
 				22ECEEC612E7C258003B50DC /* config.h */,
 			);
