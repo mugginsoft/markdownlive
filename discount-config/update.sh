@@ -14,6 +14,9 @@ status_msg "Running configure.sh..."
 cd `dirname $0`/../discount/
 ./configure.sh
 
+# make the blocktags
+make blocktags
+
 status_msg "Copying important files..."
 
 if head -n 1 config.h | grep -q "^/\*$"; then
@@ -25,9 +28,11 @@ else
 	error_msg "Check the diff before committing (and fix this script if you can)"
 fi
 cp mkdio.h ../discount-config/mkdio.h && echo 'mkdio.h'
+cp blocktags ../discount-config/blocktags && echo 'blocktags'
 
 status_msg "Clean files from working directory..."
 
-git clean -f
+# clean the working directory of generated files and folders
+git clean -f -d
 
 status_msg "Done!"

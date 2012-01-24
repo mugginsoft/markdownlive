@@ -338,7 +338,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABECD8C613C8B8CA00B77CFD /* Build configuration list for PBXNativeTarget "ORCDiscount" */;
 			buildPhases = (
-				AB5240A414CE111D0029A1EF /* ShellScript */,
 				ABECD8BD13C8B8CA00B77CFD /* Headers */,
 				ABECD8BE13C8B8CA00B77CFD /* Resources */,
 				ABECD8BF13C8B8CA00B77CFD /* Sources */,
@@ -403,22 +402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		AB5240A414CE111D0029A1EF /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd ./discount\n./configure.sh\nmake blocktags";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D15AC300486D014006FF6A4 /* Sources */ = {
