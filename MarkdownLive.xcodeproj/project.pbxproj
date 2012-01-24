@@ -16,6 +16,7 @@
 		8D15AC310486D014006FF6A4 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		AB8AB90E14CF513900DBF8D5 /* blocktags in Resources */ = {isa = PBXBuildFile; fileRef = AB8AB90D14CF513900DBF8D5 /* blocktags */; };
 		ABE8DDF913CA38B5005852B5 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 226936E612E7CDC500171322 /* styles.css */; };
 		ABECD8C713C8B90E00B77CFD /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 795F6C4E105D6EC400D1F90A /* mkdio.c */; };
 		ABECD8C813C8B92900B77CFD /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 795F6C50105D6ECE00D1F90A /* markdown.c */; };
@@ -114,6 +115,7 @@
 		8D15AC370486D014006FF6A4 /* MarkdownLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarkdownLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8AB90814CF4D2F00DBF8D5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		AB8AB90914CF4D2F00DBF8D5 /* update.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update.sh; sourceTree = "<group>"; };
+		AB8AB90D14CF513900DBF8D5 /* blocktags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blocktags; sourceTree = "<group>"; };
 		ABCE3DDF13C8DFFF00DF3CD0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		ABECD8C213C8B8CA00B77CFD /* ORCDiscount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ORCDiscount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABECD8C313C8B8CA00B77CFD /* ORCDiscount-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ORCDiscount-Info.plist"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		22ECEEC512E7C258003B50DC /* discount-config */ = {
 			isa = PBXGroup;
 			children = (
+				AB8AB90D14CF513900DBF8D5 /* blocktags */,
 				AB8AB90814CF4D2F00DBF8D5 /* README.markdown */,
 				AB8AB90914CF4D2F00DBF8D5 /* update.sh */,
 				226936B912E7C8B600171322 /* mkdio.h */,
@@ -390,6 +393,7 @@
 				1DDD582C0DA1D0D100B32029 /* MyDocument.xib in Resources */,
 				1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */,
 				795F6C87105D70A300D1F90A /* MarkdownLiveApp.icns in Resources */,
+				AB8AB90E14CF513900DBF8D5 /* blocktags in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
