@@ -56,7 +56,7 @@ basename(char *path)
 {
     char *p;
 
-    if (( p = strrchr(path, '/') ))
+    if ( p = strrchr(path, '/') )
 	return 1+p;
     return path;
 }
@@ -498,7 +498,7 @@ spin(FILE *template, MMIOT *doc, FILE *output)
     }
 } /* spin */
 
-int
+
 main(argc, argv)
 char **argv;
 {

@@ -239,7 +239,7 @@ commentblock(Paragraph *p, int *unclosed)
     char *end;
 
     for ( t = p->text; t ; t = t->next) {
-	if ( (end = strstr(T(t->text), "-->")) ) {
+	if ( end = strstr(T(t->text), "-->") ) {
 	    splitline(t, 3 + (end - T(t->text)) );
 	    ret = t->next;
 	    t->next = 0;
@@ -287,7 +287,7 @@ htmlblock(Paragraph *p, struct kw *tag, int *unclosed)
 		}
 	    }
 	    else { 
-		if ( (closing = (c == '/')) ) c = flogetc(&f);
+		if ( closing = (c == '/') ) c = flogetc(&f);
 
 		for ( i=0; i < tag->size; c=flogetc(&f) ) {
 		    if ( tag->id[i++] != toupper(c) )
@@ -475,7 +475,7 @@ isdefinition(Line *t, int *clip, int *kind)
     Line *ret;
 
     *kind = 1;
-    if ( (ret = is_discount_dt(t,clip)) )
+    if ( ret = is_discount_dt(t,clip) )
 	return ret;
 
     *kind=2;
@@ -790,7 +790,7 @@ quoteblock(Paragraph *p, DWORD flags)
 	    /* and this would be an "%id:" prefix */
 	    prefix="id";
 	    
-	if ( (p->ident = malloc(4+strlen(prefix)+S(q->text))) )
+	if ( p->ident = malloc(4+strlen(prefix)+S(q->text)) )
 	    sprintf(p->ident, "%s=\"%.*s\"", prefix, S(q->text)-(i+2),
 						     T(q->text)+(i+1) );
 
@@ -872,7 +872,7 @@ definition_block(Paragraph *top, int clip, MMIOT *f, int kind)
 	if ( (text = skipempty(q->next)) == 0 )
 	    break;
 
-	if (( para = (text != q->next) ))
+	if ( para = (text != q->next) )
 	    ___mkd_freeLineRange(q, text);
 	
 	q->next = 0; 
@@ -895,7 +895,7 @@ definition_block(Paragraph *top, int clip, MMIOT *f, int kind)
 	if ( (q = skipempty(text)) == 0 )
 	    break;
 
-	if (( para = (q != text) )) {
+	if ( para = (q != text) ) {
 	    Line anchor;
 
 	    anchor.next = text;
@@ -935,7 +935,7 @@ enumerated_block(Paragraph *top, int clip, MMIOT *f, int list_class)
 			     || islist(q, &clip, f->flags, &z) != list_class )
 	    break;
 
-	if ( (para = (q != text)) ) {
+	if ( para = (q != text) ) {
 	    Line anchor;
 
 	    anchor.next = text;
@@ -1221,7 +1221,7 @@ compile(Line *ptr, int toplevel, MMIOT *f)
 	    ptr = ptr->next;
 	    ___mkd_freeLine(r);
 	}
-	else if (( list_class = islist(ptr, &indent, f->flags, &list_type) )) {
+	else if ( list_class = islist(ptr, &indent, f->flags, &list_type) ) {
 	    if ( list_class == DL ) {
 		p = Pp(&d, ptr, DL);
 		ptr = definition_block(p, indent, f, list_type);

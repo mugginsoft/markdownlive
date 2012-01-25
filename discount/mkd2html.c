@@ -45,7 +45,7 @@ basename(char *path)
 {
     char *p;
 
-    if (( p = strrchr(path, '/') ))
+    if ( p = strrchr(path, '/') )
 	return 1+p;
     return path;
 }
@@ -64,7 +64,7 @@ fail(char *why, ...)
     exit(1);
 }
 
-int
+
 main(argc, argv)
 char **argv;
 {

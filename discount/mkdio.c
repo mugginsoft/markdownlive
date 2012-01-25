@@ -24,7 +24,7 @@ new_Document()
     Document *ret = calloc(sizeof(Document), 1);
 
     if ( ret ) {
-	if (( ret->ctx = calloc(sizeof(MMIOT), 1) )) {
+	if ( ret->ctx = calloc(sizeof(MMIOT), 1) ) {
 	    ret->magic = VALID_DOCUMENT;
 	    return ret;
 	}
@@ -269,7 +269,7 @@ mkd_line(char *bfr, int size, char **res, DWORD flags)
     
     mkd_parse_line(bfr, size, &f, flags);
 
-    if ( (len = S(f.out)) ) {
+    if ( len = S(f.out) ) {
 	/* kludge alert;  we know that T(f.out) is malloced memory,
 	 * so we can just steal it away.   This is awful -- there
 	 * should be an opaque method that transparently moves 

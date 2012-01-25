@@ -1,4 +1,4 @@
-CC=@CC@ -Wall -I.
+CC=@CC@ -I.
 LFLAGS=-L.
 CFLAGS=@CFLAGS@
 AR=@AR@
